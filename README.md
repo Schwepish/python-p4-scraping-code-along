@@ -32,9 +32,9 @@ objects. Each instance of the `Course` class will have a series of attributes.
 The values of each of these attributes will be scraped from the website.
 
 We'll be creating two classes, `Scraper` and `Course`. The `Scraper` class will
-be responsible for using Beautiful Soup to scrape the relevant data. It will
-also be responsible for taking that data and using it to instantiate instances
-of the `Course` class.
+be responsible for using Beautiful Soup to scrape the relevant data. It will also be
+responsible for taking that data and using it to instantiate instances of the
+`Course` class.
 
 ***
 
@@ -63,7 +63,6 @@ Open up `lib/Course.py` and define your class:
 ```py
 class Course:
     pass
-
 ```
 
 Now, let's run *just* the `Course` specs by typing `pytest testing/course_test.py`
@@ -124,13 +123,10 @@ class Course:
     output += f'Title: {self.title}\nSchedule: {self.schedule}\nDescription: {self.description}\n'
     output += '------------------'
     return output
-
 ```
 
 Go ahead and run the test suite again. Now we should be passing all of our
 instance method tests!
-
-***
 
 ## Code Along II: The `Scraper` Class
 
@@ -196,17 +192,12 @@ class Scraper:
     
 ```
 
-Notice that we are already requiring Beautiful Soup, requests and ipdb at the
-top of the file. We are ready to us Beautiful Soup and requests to get our HTML.
-Add the following line to your `.get_page` method:
+Notice that we are already requiring Beautiful Soup, requests and ipdb at the top of
+the file. We are ready to us Beautiful Soup and requests to get our HTML. Add the
+following line to your `.get_page` method:
 
 ```py
-doc = BeautifulSoup(
-    requests.get(
-        "http://learn-co-curriculum.github.io/site-for-scraping/courses"
-    ).text,
-    'html.parser'
-)
+doc = BeautifulSoup(requests.get("http://learn-co-curriculum.github.io/site-for-scraping/courses").text, 'html.parser')
 ```
 
 Then, we'll place a `ipdb.set_trace()` on the next line. At the bottom of the file,
@@ -450,15 +441,13 @@ class Scraper:
 
 ```
 
-For each iteration over the collection of Beautiful Soup XML elements returned
-to us by the `doc.select(".post")` line, we are making a new instance of the
-`Course` class and giving that instance the `title`, `schedule` and
-`description` extracted from the tag object.
-
-Place a `ipdb.set_trace()` at the end of the method. Now, run the code in this
-file with `python lib/Scraper.py`. When you hit the binding, enter
-`print(scraper.courses)` into your terminal and take a look at all the courses
-we made:
+For each iteration over the collection of Beautiful Soup XML elements returned to us
+by the `doc.select(".post")` line, we are making a new instance of the `Course`
+class and giving that instance the `title`, `schedule` and `description`
+extracted from the tag object.
+Place a `ipdb.set_trace()` at the end of the method. Now, run the code in this file
+with `python lib/Scraper.py`. When you hit the binding, enter `print(scraper.courses)` into
+your terminal and take a look at all the courses we made:
 
 ```bash
 prabhdipgill@PrabhdiGillsMBP python-scraping-code-along % pipenv run python lib/Scraper.py
@@ -503,8 +492,8 @@ Title:
 Wow! We have a collection of `Course` objects, each of which have attributes
 that we scraped from the website. We are such good programmers.
 
-Note that the last two courses are empty because the webpage has two empty
-placeholder courses with the `.post` css selector.
+Note that the last two courses are empty because the webpage has two empty placeholder courses
+with the `.post` css selector.
 
 ### Extracting Our Code into Methods
 
@@ -589,7 +578,7 @@ Ta-da! We did it. Check out all of those awesome courses printed out to your
 terminal. If you're still having trouble getting your tests to pass, check out
 the final code below:
 
-### Solution Code: The `Scraper` Class
+### Final Code: The `Scraper` Class
 
 ```py
 class Scraper:
